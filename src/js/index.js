@@ -88,4 +88,5 @@ function renderGallery(cards) {
         lightbox.refresh()
         addMore.style.display = 'inline'
 }
-    
+
+//pikmin
