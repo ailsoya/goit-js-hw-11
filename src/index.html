@@ -3,16 +3,24 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.1/simple-lightbox.min.css" integrity="sha512-bhYgu+LnK6ZXsq18JjhqqzZjnw4GzgCe6s34JBw09tQZ9oFC5tdSlLJW/7ZCf9EXuepe6tnQW57X8z3DKnsAGg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="style.css">
         <title>Homework 11</title>
     </head>
     <body>
-        <div class="search-block">
-            <form class="search-form" id="search-form">
-                <input type="text" name="searchQuery" autocomplete="off" placeholder="Search images...">
-                <button type="submit" class="button-search"><svg class="search-svg"><use href="./SVG/search.svg#sea-icon"></use></svg></button>
-            </form>
-        </div>
+        <header>
+            <div class="search-block">
+                <form class="search-form" id="search-form">
+                    <input type="text" class="searchQuery" name="searchQuery" autocomplete="off" placeholder="Search images...">
+                    <button type="submit" class="button-search"><svg class="search-svg"><use href="./SVG/search.svg#sea-icon"></use></svg></button>
+                </form>
+            </div>
+        </header>
+        <main>
+            <div class="gallery" uk-lightbox></div>
+            <div class="load-more-block"><button type="button" class="load-more">Load more</button></div>
+        </main>
         <script src="js/index.js" type="module"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.1/simple-lightbox.min.js" integrity="sha512-X1tKd7cMiYWKVDmFHSn+z1Y+BdrNG6Qvrhj3emg0ZOMsAuzug4ET9PmOFBgYyvcjI1hHGxhkQ1IXhOd9obYeFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </body>
 </html>
