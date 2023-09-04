@@ -35,7 +35,7 @@ addMore.addEventListener('click', function() {
     findCardsRender()
 })
 
-function findCards() {
+async function findCards() {
     const params = new URLSearchParams({
         page: currentPage,
         per_page: 40,
@@ -46,7 +46,8 @@ function findCards() {
         safesearch: true,
     })
 
-    return axios.get(`${baseURL}?${params}_limit=5`)
+    let responce = await axios.get(`${baseURL}?${params}`)
+    return responce
 }
 
 function findCardsRender() {
