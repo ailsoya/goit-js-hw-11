@@ -15,20 +15,6 @@ let currentValue
 let newis = true
 let currentPage = 1
 
-const params = new URLSearchParams({
-    page: currentPage,
-    per_page: 40,
-    key: "39209213-26e6de3edfb0581cbb486c9d2",
-    q: currentValue,
-    image_type: 'photo',
-    orientation: 'horizontal',
-    safesearch: true,
-})
-
-const options = {
-    method: "PUT",
-}  
-
 searchForm.addEventListener('submit', function(event) {
     event.preventDefault(event)
     if(currentValue === input.value) {
@@ -50,7 +36,17 @@ addMore.addEventListener('click', function() {
 })
 
 async function findCards() {
-    let responce = await axios.get(`${baseURL}?${params}`, options)
+    const params = new URLSearchParams({
+        page: currentPage,
+        per_page: 40,
+        key: "39209213-26e6de3edfb0581cbb486c9d2",
+        q: currentValue,
+        image_type: 'photo',
+        orientation: 'horizontal',
+        safesearch: true,
+    })
+
+    let responce = await axios.get(`${baseURL}?${params}`)
     return responce
 }
 
@@ -63,7 +59,14 @@ function findCardsRender() {
                 if(newis) {
                     Notiflix.Notify.success(`Hooray! We found ${resp.data.totalHits} images.`)
                 }
+                if(resp.data.hits.length < 40) {
+                    console.log(resp.data.hits.length)
+                    addMore.style.display = 'none'
+                } else {
+                    addMore.style.display = 'inline'
+                }
                 renderGallery(resp.data)
+                
             }
         })
         .catch(error => {
@@ -91,7 +94,6 @@ function renderGallery(cards) {
         .join("")
         gallery.insertAdjacentHTML('beforeend', markup)
         lightbox.refresh()
-        addMore.style.display = 'inline'
 }
 
 //pikmin
