@@ -15,6 +15,20 @@ let currentValue
 let newis = true
 let currentPage = 1
 
+const params = new URLSearchParams({
+    page: currentPage,
+    per_page: 40,
+    key: "39209213-26e6de3edfb0581cbb486c9d2",
+    q: currentValue,
+    image_type: 'photo',
+    orientation: 'horizontal',
+    safesearch: true,
+})
+
+const options = {
+    method: "PUT",
+}  
+
 searchForm.addEventListener('submit', function(event) {
     event.preventDefault(event)
     if(currentValue === input.value) {
@@ -36,17 +50,7 @@ addMore.addEventListener('click', function() {
 })
 
 async function findCards() {
-    const params = new URLSearchParams({
-        page: currentPage,
-        per_page: 40,
-        key: "39209213-26e6de3edfb0581cbb486c9d2",
-        q: currentValue,
-        image_type: 'photo',
-        orientation: 'horizontal',
-        safesearch: true,
-    })
-
-    let responce = await axios.get(`${baseURL}?${params}`)
+    let responce = await axios.get(`${baseURL}?${params}`, options)
     return responce
 }
 
